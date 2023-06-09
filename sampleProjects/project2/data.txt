@@ -1,0 +1,23 @@
+ {
+      "id": 11,
+      "name": "Harit Khushwas",
+      "username": "Harit.Khushwas",
+      "email": "HaritKhuhwas@gmail.com",
+      "address": {
+        "street": "Kattie Turnpike",
+        "suite": "Suite 198",
+        "city": "Zerakhput",
+        "zipcode": 260302,
+        "geo": {
+          "lat": "-38.2386",
+          "lng": "57.2232"
+        }
+      },
+      "phone": "024-648-3804",
+      "website": "harit2002/github.io",
+      "company": {
+        "name": "Flyboard Ventures",
+        "catchPhrase": "Centralized empowering task-force",
+        "bs": "target end-to-end models"
+      }
+    }

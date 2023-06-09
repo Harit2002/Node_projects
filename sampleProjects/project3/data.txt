@@ -1,0 +1,4 @@
+URL: instagram.com | Address: 157.240.198.174 | IPv4 
+URL: facebook.com | Address: 157.240.198.35 | IPv4
+URL: youtube.com | Address: 142.250.194.206 | IPv4
+
