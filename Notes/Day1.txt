@@ -1,0 +1,109 @@
+Date :-- 29/05/2023
+Node.Js
+
+Node is baiscally a enviroment built outside the browser that can run javaScript which is basically built on top of
+chrome V8 engine. It uses commonJs library by defalut. Every file is a module.
+
+Node is used for server side programming.
+
+REPL - Read Evaluate Print Loop
+CLI - Command Line Interface
+
+To use node we can type node on CLI of our pc and if node is installed then we are reade to code in node.
+
+
+__dirname - path to current directory
+__filename - file name
+require - function to use modules(commonJS)
+module - info about current module(file)
+process - info about env the program is being executed
+
+When creating our own module in a file we must use './' in front of file name, it is done to differentiate between built in and user crated modules.
+
+module.export = {module name}
+
+and when we want to use it we can do 
+const varibale_name = requre('./filename') 
+
+Built in modules  :-----
+<--=================-->
+1. OS 
+2. PATH 
+3. FS 
+4. HTTP 
+
+To start an node project we use :-- 
+"npm init -y" Command
+
+BandWidth :---  Data transfer capacity of a network is called bandwidth.
+<--=========-->
+
+To create a server we can use node inbuilt module i.e http module :-- 
+
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    if(request.url == "/") {
+        response.end("This is the home page")
+    }
+
+    else if(request.url == "/data" && request.method == "POST") {
+        response.end("Some data will be sent")
+    }
+
+    else response.end(http.STATUS_CODES["404"])
+});
+
+server.listen(4500, () => {
+    console.log("Server is running at 4500 port");
+});
+
+Diff between .end and .write :-- 
+----------------------------------
+
+When we use .write user will not know when the response will end so it will keep on loading the page where as in case of
+.end it will mark the end of response and page will stop loading.
+
+NodeMon :---
+=============
+
+It restart the server everytime when changes are made in it.
+
+"npm run server"
+
+ "scripts": {
+    "server" :"nodemon index.js"
+  }
+
+ "npx autocannon http://localhost:7300/"
+
+ command to check benchmark of sever that we created.
+
+If we want to mention request type then we need to do it explicitly
+request.method == "POST"
+
+Posting data :--
+
+str = "";
+
+request.on("data", (chunk) => {
+    str += chunk
+})
+
+request.on("end", () => {
+    console.log(str);
+})
+
+This is long form of retreving the data since data will be available in small chunks and we have to collect all chunk to from data.
+
+Now we can do same thing simply by using express :--
+-----------------------------------------------------
+
+Stream :-
+-=-=-=-=-=
+
+try {
+const dataStream = fs.createReadStream("./data.json", "utf-8");
+dataStream.pipe(response);
+
+In this way we can send our data in chunks to increase the benchmark

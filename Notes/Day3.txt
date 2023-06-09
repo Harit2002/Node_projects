@@ -1,0 +1,77 @@
+MongoDb :-----
+---------------
+
+1. db.createCollection("product");
+
+2. db.products.insertOne({item:"shoes", qty:"1", colour: "Black"})
+
+3. db.products.insertMany({item:"shirt", qty:"1", colour: "Pink"}, {item:"Pent", qty:"1", colour: "Blue"})
+
+4. 
+ i> show dbs 
+ ii> show collections
+
+5. db.product.find()
+
+6. updating document/data in mongo :-
+querry :- db.collectionName.updateMany({filter object}}, $set: {changes we want to make }) // format to update data in mongo dbs
+eg :-- db.product.updateMany({name : "harit"}, $set: {name : "Harit Khushwas"}) // format to update data in mongo dbs
+
+7. deleting :--
+db.collectionName.deleteMany({conditon for deletion});
+db.product.deleteMany({isAvailable : false});
+
+8. filtering :--
+db.collectionName.find({$and:[{health : {$gte:70} }, {health:{$lte:60} } ]})
+
+9. sorting :--
+db.collectionName.find({health : 1 });    sort according to ascending order of health
+db.collectionName.find({health : -1 });    sort according to descending order of health
+
+10. pagination :--
+db.collectionName.skip(1).find({health : 1 });   //skip first document/row
+db.collectionName.skip(1).limit(1).find({health : 1 });   //limit response to one document
+
+
+
+Steps to connect to database; :---
+------------------------------------
+const mongoose = require("mongoose");
+
+const main = async () => {
+  try {
+    const connnection = await mongoose.connect("mongodb://127.0.0.1:27017/backend");
+    console.log("Connected to mongo");
+  }
+   catch (err) {
+    console.log(err);
+  }
+};
+main();
+
+// creating structure of data
+const studentSchema = mongoose.Schema({
+  name: String,
+  age: Number,
+  city: String,
+  {
+    versionKey:false
+  }
+});
+
+//creating model
+const StudentModel = mongoose.model("student", studentSchema);
+
+Mongoo Mathematical operations :--
+------------------------------------
+
+# we don't use mathematical symbols in mongo
+
+1. <= :- $lte   //less then equal to
+2. >= :- $gte   //grater then equal to
+3. <  :- $lt    //less then
+4. >  :- $gt    //grater then
+5. == :- $eq    //equal
+6. != :- $ne    //not equal
+7. && :- $and   
+8. || :- $or

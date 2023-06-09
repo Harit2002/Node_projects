@@ -1,0 +1,96 @@
+Express :--
+=============
+
+Express is frmework based on http package of node. Sinnce it is an external package so we need to install it before using.
+To install we can do "npm i express";
+
+const express = require("express");
+const app = express();
+ 
+app.use(express.json())    //middleware (using it we don't need to convert data or parse data from json to normall object)
+
+
+//using express
+app.get("/", (req, res) => {
+    res.end("HOME PAGE");
+})
+
+app.post("/users", (req, res) => {
+
+})
+
+app.listen(5500, () => {
+    console.log("Server is running at port 5500");
+})
+
+Whenever we are sending a post request data is present in body of request.
+req.data;
+
+
+Request parameter and pathvariable :---
+--------------------------------------------
+
+i.) request param :-- req.querry.id
+"/users"   
+http://localhost:4500/user?id=1
+
+
+2.) pathvariable :-- req.param.id
+"/users/:id"
+ http://localhost:4500/user/1
+
+
+
+.evn :--
+---------
+We can use .env file to protect our data
+
+1.) "npm i dotevn"
+2.) create file with name .env
+3.) To use it we need :-- require("dotenv").config();
+
+process.env.Port will give us secure data.
+
+Middlewares :---
+================
+
+1.) inbuilt
+2.) external
+3.) local
+
+
+This is example of local database :--
+--------------------------------------
+
+app.use((req, res, next) => {
+    let start = new Date().getTime();
+    console.log("Hi from middlewaer);
+    next();
+    console.log("Bye from middlewaer);
+    let end = new Date().getTime();
+    console.log(`time taken : ${end - start}`);
+})
+
+1. If you want your middleware to run of all the routes m put it at the top.
+
+Multer :--
+-----------
+npm i multer
+
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: "./upload/images",
+  filename: (req, file, callback) => {
+    return callback(null, `${file.fieldname}${Date.now()}${file.originalname}`);
+  },
+});
+
+const upload = multer({storage});
+
+app.post("/upload", upload.single("profile"), (req, res) => {
+  res.json({
+    success: 1,
+    profile_url: `http://localhost:5000/profile/${req.file.filename}`,
+  });
+});
