@@ -4,6 +4,7 @@ const connnection = require("./db");
 require("dotenv").config();
 const moviesRouter = require("./routes/movieRoutes");
 const seriesRouter = require("./routes/seriesRoutes");
+const userRouter = require('./routes/userRoutes')
 app.use(express.json());
 
 const logger = (req, res, next) => {
@@ -19,7 +20,7 @@ const logger = (req, res, next) => {
 // app.use('/', './routes/web.js')
 
 app.use(logger);
-
+app.use('/users', userRouter);
 app.use("/movies", moviesRouter);
 app.use("/series", seriesRouter);
 
