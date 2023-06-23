@@ -14,8 +14,8 @@ MongoDb :-----
 5. db.product.find()
 
 6. updating document/data in mongo :-
-querry :- db.collectionName.updateMany({filter object}}, $set: {changes we want to make }) // format to update data in mongo dbs
-eg :-- db.product.updateMany({name : "harit"}, $set: {name : "Harit Khushwas"}) // format to update data in mongo dbs
+querry :- db.collectionName.updateMany({filter object}}, $set: {changes we want to make }) // syntax to update data in mongo dbs
+eg :-- db.product.updateMany({name : "harit"}, $set: {name : "Harit Khushwas"}) // synta to update data in mongo dbs
 
 7. deleting :--
 db.collectionName.deleteMany({conditon for deletion});

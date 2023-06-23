@@ -1,0 +1,47 @@
+Type Script:--
+----------------
+
+1. Typescript is basically superset of normal js. It ensures type safty that is not there in javaScript.
+2. It gives more contorol to programmer as he can mention return, parameter and variable type which will be staticly checked and will avoid mistakes.
+
+
+Setup TypeScript :--
+---------------------
+
+1. npm i -g typeScript.
+2. make a file with .ts extension.
+3. use tsc filename.ts to run the file.
+4. After this a new js file will be created.
+5. TypeScript implicityly get converted to javaScript.
+
+Creating a project :----
+-------------------------
+1. npm init -you
+2. tsc --init
+3. npm i express @types/express nodemon ts-node @types/node typescript
+
+
+How to run ts file:---
+-------------------------
+1. If you are using ts for first time and had installed ts then you can do tsc (tsc --init -----> npm i @types/node -----> filename.ts ----> node filename.js).
+2. Install node-ts in system using "npm i -g node-ts" command.
+3. Then you can simply do node-ts filename.ts. (No js file will be created this time.)
+
+
+Advantages over javaScript:---
+-------------------------------
+
+1. It gives more controle over the code.
+2. Can avoid conflicts if working on team project.
+3. It gives the reader more details about the work.
+4. Once you are familiar with js you can easily learn TypeScript.
+
+Different types in typeScript:--
+--------------------------------
+
+1. number -- float, int, long
+2. string
+3. boolean
+4. any
+5. void
+6. never

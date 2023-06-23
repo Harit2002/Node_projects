@@ -21,15 +21,12 @@ app.get("/", (req, res) => {
 app.post("/submit", async (req, res) => {
   console.log(req.body);
   try {
-    // Create a new form entry using the submitted data
-    const entry = new FormEntry(req.body);
+    const user = new FormEntry(req.body);
 
-    // Save the entry to the database
-    await entry.save();
+    await user.save();
 
     res.redirect("/list");
   } catch (err) {
-    console.log(err);
     res.status(500).send("Error saving form entry.");
   }
 });
@@ -37,7 +34,7 @@ app.post("/submit", async (req, res) => {
 // Render the list of form entries
 app.get("/list", async (req, res) => {
   try {
-    // Retrieve all form entries from the database
+    
     const data = await FormEntry.find();
 
     res.render("data", { data });
@@ -59,9 +56,9 @@ app.get("/export", async (req, res) => {
 
     // Transform entries into an array of arrays
     const csvData = entries.map((entry) => [
-      entry.name=entry.name,
-      entry.email=entry.email,
-      entry.address=entry.address,
+      (entry.name = entry.name),
+      (entry.email = entry.email),
+      (entry.address = entry.address),
     ]);
     console.log(csvData);
     // Write the entries to the CSV file
